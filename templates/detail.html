@@ -1,0 +1,16 @@
+ {% extends 'base.html' %}
+
+ {% block title %} Detail View {% endblock %}
+
+ {% block body %}
+ <!-- <div>
+ <a href="{% url 'feed:index' %}" style="text-decoration: none;position: sticky;"> &larr; Go back</a>
+ </div> -->
+
+<div class="row">
+    <div class="col col-md-10 offset-md-1 my-4">
+        <h3 class="mt-2" style="text-align: center; ">{{post.text}} </h3>
+        <img src="{{post.img.url}}" class="img-fluid rounded "  alt="#">
+    </div>
+</div>
+ {% endblock %}

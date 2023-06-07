@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Add post {% endblock %}
+
+{% block body %}
+            <!-- <div>
+                <a href="{% url 'feed:index' %}" style="text-decoration: none;">Go to Home &nwArr;</a>
+                <br>
+            </div> -->
+
+
+<form method="post" action="" enctype="multipart/form-data" class="my-5 py-5 col-sm-4 offset-sm-4 ps-5  ">
+    <h2>Upload here!</h2>
+ {% csrf_token %}
+{{form.as_p}}
+<div>
+<button type="submit" class="btn btn-success"> Submit</button>
+<button type="button" class="btn btn-secondary"> <a href="{% url 'feed:index' %}" style="text-decoration: none;color: whitesmoke; ">Cancel</a></button>
+</div>
+</form>
+{% endblock %}

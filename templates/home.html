@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load sorl_thumbnail %}
+
+{% block title %} New homepage
+{% endblock %}
+
+{% block body %}
+
+<!-- <div style="padding-bottom: 10px; text-align: center; font-size: larger; position: sticky ; top:0px; background-color: rgb(235, 235, 235);">
+<a href="{% url  'feed:post'  %}" style="text-decoration: none;"> Create Post &rarr;</a>
+<br>
+</div> -->
+
+
+<div class="row">
+    {% for every_post in post %}
+    
+    
+                            <!-- <a href="{% url 'feed:detail' every_post.id %}" style="display: inline-block; text-decoration: none; font-weight: bolder; color:black;">
+                                <br>
+                                {% thumbnail every_post.img "200x200" crop='center' as im %}
+                                <img src="{{im.url}}" height="{{im.height}}" width="{{im.width}}">
+                                {% endthumbnail %}    </a>  -->
+
+        <div class="col-sm-6 col-md-5 col-lg-3">
+            <div class="card my-4" >
+                {% thumbnail every_post.img "200x200" crop='center' as im %}
+                    <img src="{{im.url}}" class="card-img-top" alt="#">
+                {% endthumbnail %}
+                <div class="card-body">
+                    <p class="card-text text-nowrap overflow-hidden">{{every_post.text}}</p>
+                    <a href="{% url 'feed:detail' every_post.id %}" class="btn btn-primary">View Full Image</a>
+                </div>
+            </div>
+        </div>
+
+        {% empty %}
+        <div class="col-sm-6 offset-sm-3 text-center py-5 my-5">
+            <h2 class="mb-3">Welcome!</h2>
+            <h5 class="mb-4">Add your first image?</h5>
+            <a href="{% url 'feed:post' %}" class="btn btn-success">Upload Image </a>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
